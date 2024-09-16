@@ -1,4 +1,4 @@
-The are scripts that work on the UTIG heirarchy for data analysis, quality control, and troubleshooting
+The are scripts that work on the UTIG heirarchy for data analysis, quality control, and troubleshooting. check for docuentation here and within the code header.
 
 ### make_elv_radargram.py
 make an elvation corrected radargram
