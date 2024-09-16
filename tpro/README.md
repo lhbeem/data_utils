@@ -20,7 +20,7 @@ optional arguments:
   -CHA        flag to use CHA root
 ```
 
-### list_project
+### list_project.py
 Lists all the PSTs for a given project and all the sets the were used. Looks in both $WAIS and $CHA and generates separate lists for each
 
 ```
