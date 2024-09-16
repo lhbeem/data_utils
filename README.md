@@ -1,0 +1,34 @@
+The are scripts that work on the UTIG heirarchy for data analysis, quality control, and troubleshooting
+
+### make_elv_radargram.py
+make an elvation corrected radargram
+
+height of the aircraft uses: $WAIS/targ/treg/{PST}/PIK1_{platform}a/ztim_llz.bin
+    
+surface pick comes from the targ-propgated pick: $WAIS/targ/xtra/{XEPD}/CMP/pik1/{PST}/MagLoResInco1.srf
+
+srf elevation come from differenceing the aircraft height from the radar range
+- assuming wavespeed args.cair
+- assuming main bang offset args.bang
+
+```
+positional arguments: 
+  pst                 PST to generate radargram
+  product             radar product to check (pik1, foc1, foc2) 
+  chan                radar channel to plot 
+
+optional arguments:
+  -h, --help          show this help message and exit
+  -WAIS WAIS          WAIS root path variable
+  -c C                radar wave speed in ice
+  -cair CAIR          radar wave speed in air
+  -contrast CONTRAST  constrast [high or low]
+  -flip               flip radargram orientation
+  -samples SAMPLES    samples per trace
+  -F F                sample frequency
+  -bang BANG          main bang offset in samples
+  -vp                 verbose printing (i.e. second page with source data)
+  -pole POLE          pole of data region (south or north
+  -raster             save copy of raster as .npz [rad,z,d]
+
+```
