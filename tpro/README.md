@@ -21,7 +21,7 @@ optional arguments:
 ```
 
 ### list_project.py
-Lists all the PSTs for a given project and all the sets the were used. Looks in both $WAIS and $CHA and generates separate lists for each
+Lists all the PSTs for a given project and all the sets the were used. Looks in both $WAIS and $CHA and generates separate lists for each. The code looks at what pik1 files exists.
 
 ```
 usage: list_project.py [-h] [-xped] proj
