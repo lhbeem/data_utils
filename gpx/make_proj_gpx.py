@@ -3,24 +3,24 @@
 
 """
 
-Creates a synopsis of an XPED as a GPX or a space-delimited table.
+Creates a synopsis of an PROJ as a GPX or a space-delimited table.
 
-For example, if you want to create a GPX of all transects for ICP11_GCX, 
+For example, if you want to create a GPX of all transects in THW, 
 and output that to /tmp/synoptic_tracks.
 
-./make_synoptic_track.py --xped ICP11_GCX -o /tmp/synoptic_tracks
+./make_synoptic_track.py --proj THW -o /tmp/synoptic_tracks
 
 If you wanted to get a synopsis for the season CHA5, a CHINARE season,
 use the --WAIS flag 
 
-./make_synoptic_track.py --WAIS /disk/kea/CHA --xped CHA5 -o /tmp/synoptic_tracks
+./make_synoptic_track.py --WAIS /disk/kea/CHA --proj AMY -o /tmp/synoptic_tracks
 
 
 If you want to output as a space-delimited table of points rather than a GPX, 
 use the --format table option
 
 
-./make_synoptic_track.py --WAIS /disk/kea/CHA --xped CHA5 -o /tmp/synoptic_tracks --format table
+./make_synoptic_track.py --WAIS /disk/kea/CHA --proj AMY -o /tmp/synoptic_tracks --format table
 
 """
 
