@@ -19,3 +19,17 @@ optional arguments:
   -h, --help  show this help message and exit
   -CHA        flag to use CHA root
 ```
+
+### list_project
+Lists all the PSTs for a given project and all the sets the were used. Looks in both $WAIS and $CHA and generates separate lists for each
+
+```
+usage: list_project.py [-h] [-xped] proj
+
+positional arguments:
+  proj        project to list
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -xped       print xped of each pst
+```
