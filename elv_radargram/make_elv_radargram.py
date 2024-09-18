@@ -166,7 +166,7 @@ def main(args):
         pl.title(args.pst)
         pl.plot(np.linspace(0,dx,len(d)), srf_elv, label = 'srf elv')
         pl.plot(np.linspace(0,dx,len(d)), hgt, label = 'platform alt')
-        pl.plot(np.linspace(0,dx,len(d)), pick, label = 'srf pick sample')
+        pl.plot(np.linspace(0,dx,len(d)), (pick-args.bang) / 2 / args.F * args.cair, label = 'srf pick range')
         pl.ylabel('Elevation (m)')
         pl.xlabel('Disstance along profile (km)')
         
