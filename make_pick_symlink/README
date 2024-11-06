@@ -1,1 +1,4 @@
+File for batch making symlinks of picks in $WAIS/code/orig/xtra/{XPED}/PIK/{pik1,Best_Versions}/{PST}
+
+the code using a list that pairs a PST with the picker label. The code looks for a subdirectory of `lists` to find the specified list. 
 
