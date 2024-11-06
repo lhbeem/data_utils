@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+
+
+import subprocess
+import argparse
+import os
+import numpy as np
+
+
+def make_symlink(args):
+    if args.CHA:
+        WAIS = '/disk/kea/CHA'
+    else:
+        WAIS = '/disk/kea/WAIS'
+
+    list_file = '/disk/kea/WAIS/home/wais/users/lhb/utils/make_pick_symlink/lists/{}'.format(args.list)
+    list = np.loadtxt(list_file,dtype='str',delimiter=',')
+
+    if args.radar == 'pik1':
+        pick_pth='{}/orig/xtra/{}/PIK/pik1/'.format(WAIS,args.xped)
+        srf_pick = 'MagLoResInco1.srf_'
+        bed_pick = 'MagLoResInco2.bed_'
+    if args.radar == 'foc1':
+        pick_pth='{}/orig/xtra/{}/PIK/Best_Versions/'.formar(WAIS,args.xped)
+        srf_pick = 'M1D1.srf_'
+        bed_pick = 'M1D2.bed_'
+
+    print(args.xped, args.radar, args.interface)
+    for pst,label in list:
+        pick_folder = pick_pth+pst.strip()+'/'
+        srf_pick_file = srf_pick + label.strip()
+        bed_pick_file = bed_pick + label.strip()
+        
+        srf_link_file = pick_folder + srf_pick + '000'
+        bed_link_file = pick_folder + bed_pick + '000'
+
+        print(pst)
+        
+        if args.interface == 'srf':
+            write_link(srf_pick_file,srf_link_file,pst)
+        if args.interface == 'bed':
+            write_link(bed_pick_file,bed_link_file,pst)
+
+def write_link(pick,link,pst):
+    if os.path.exists(link):
+        print('simlink already exists: ',pst)
+        if args.overwrite:
+            print('overwrite: ',pst)
+            ln_cmd_over(pick, link)
+        else:
+            print('not overwritten, use -overwrite flag')
+    else:
+        print('write link file: ',pst)
+        ln_cmd(pick,link)
+
+                
+def ln_cmd(pick_file,link_file):
+    cmd = 'ln -s {} {}'.format(pick_file, link_file)
+    subprocess.call(cmd, shell=True)
+    
+def ln_cmd_over(pick_file,link_file):
+    cmd = 'ln -sf {} {}'.format(pick_file, link_file)                   
+    subprocess.call(cmd, shell=True)
+
+if __name__=="__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('xped',type=str, help='project if wildcard operators are desired enclose argument in double quotes')
+    parser.add_argument('radar',type=str, choices=['pik1','foc1'], help='radar processor (pik1 or foc1)')
+    parser.add_argument('interface',type=str, choices=['srf','bed'], help='interface to run (srf,bed)')
+    parser.add_argument('-CHA',action='store_true',help='flag to use CHA root')
+    parser.add_argument('list',type=str,help='comma delimited file with PST and picker label pairs, in the subfolder lists')
+    parser.add_argument('-overwrite',action='store_true',help='overwrite existing symlinks')
+    args = parser.parse_args()
+
+
+    make_symlink(args)
+
